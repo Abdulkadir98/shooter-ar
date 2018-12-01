@@ -1,19 +1,9 @@
 package com.raywenderlich.whacardroid
 
 import android.content.Context
-import android.os.Handler
-import android.util.Log
 import android.view.Gravity
 import android.widget.Toast
-import com.google.ar.core.HitResult
-import com.google.ar.core.Plane
-import com.google.ar.sceneform.AnchorNode
-import com.google.ar.sceneform.Node
-import com.google.ar.sceneform.math.Vector3
 import com.google.ar.sceneform.rendering.Light
-import com.google.ar.sceneform.rendering.Renderable
-import com.google.ar.sceneform.ux.ArFragment
-import com.google.ar.sceneform.ux.TransformableNode
 import java.util.concurrent.ThreadLocalRandom
 import android.animation.ValueAnimator
 import android.animation.ObjectAnimator

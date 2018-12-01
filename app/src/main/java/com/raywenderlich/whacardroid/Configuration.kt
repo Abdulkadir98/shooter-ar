@@ -3,7 +3,7 @@ package com.raywenderlich.whacardroid
 class Configuration {
   companion object {
     const val COL_NUM = 3
-    const val ROW_NUM = 4
+    const val ROW_NUM = 3
 
     // Min / max amount of time (in ms) between
     // two different droid moves
@@ -18,6 +18,6 @@ class Configuration {
     // Number of moves per time
     const val MOVES_PER_TIME = 3
 
-    const val START_LIVES = 3
+    const val START_LIVES = 1
   }
 }

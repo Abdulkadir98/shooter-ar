@@ -47,6 +47,10 @@ sceneform.asset('sampledata/models/andy.obj',
         'default',
         'sampledata/models/andy.sfa',
         'src/main/res/raw/andy')
+sceneform.asset('sampledata/models/heart.obj',
+        'default',
+        'sampledata/models/heart.sfa',
+        'src/main/assets/heart')
 repositories {
     mavenCentral()
 }

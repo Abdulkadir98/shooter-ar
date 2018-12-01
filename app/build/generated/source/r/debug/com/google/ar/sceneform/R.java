@@ -1004,16 +1004,16 @@ public final class R {
         public static final int support_simple_spinner_dropdown_item = 0x7f0a0040;
     }
     public static final class raw {
-        public static final int sceneform_blur_material = 0x7f0c0001;
-        public static final int sceneform_camera_material = 0x7f0c0002;
-        public static final int sceneform_default_light_probes = 0x7f0c0003;
-        public static final int sceneform_opaque_colored_material = 0x7f0c0005;
-        public static final int sceneform_opaque_textured_material = 0x7f0c0006;
-        public static final int sceneform_plane_material = 0x7f0c0007;
-        public static final int sceneform_plane_shadow_material = 0x7f0c0008;
-        public static final int sceneform_transparent_colored_material = 0x7f0c0009;
-        public static final int sceneform_transparent_textured_material = 0x7f0c000a;
-        public static final int sceneform_view_renderable = 0x7f0c000b;
+        public static final int sceneform_blur_material = 0x7f0c0002;
+        public static final int sceneform_camera_material = 0x7f0c0003;
+        public static final int sceneform_default_light_probes = 0x7f0c0004;
+        public static final int sceneform_opaque_colored_material = 0x7f0c0006;
+        public static final int sceneform_opaque_textured_material = 0x7f0c0007;
+        public static final int sceneform_plane_material = 0x7f0c0008;
+        public static final int sceneform_plane_shadow_material = 0x7f0c0009;
+        public static final int sceneform_transparent_colored_material = 0x7f0c000a;
+        public static final int sceneform_transparent_textured_material = 0x7f0c000b;
+        public static final int sceneform_view_renderable = 0x7f0c000c;
     }
     public static final class string {
         public static final int __arcore_cancel = 0x7f0d0000;
