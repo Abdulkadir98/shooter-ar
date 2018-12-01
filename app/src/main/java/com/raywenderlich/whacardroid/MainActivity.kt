@@ -39,7 +39,9 @@ class MainActivity : AppCompatActivity() {
   private var lastRowOffset : TranslatableNode? = null
 
   private var grid = Array(ROW_NUM) { arrayOfNulls<TranslatableNode>(COL_NUM) }
+  private var heartNode: TranslatableNode? = null
   private var initialized = false
+  private var heartClicked = false
 
   private val pullUpRunnable: Runnable by lazy {
     Runnable {
@@ -55,11 +57,17 @@ class MainActivity : AppCompatActivity() {
                   val pullDownDelay = (MIN_PULL_DOWN_DELAY_MS..MAX_PULL_DOWN_DELAY_MS).random()
                   gameHandler.postDelayed({ pullDown() }, pullDownDelay)
                 }
+        heartNode?.apply {
+          pullUp(2F, true)
+        }
+
 
         // 4
         // Delay between this move and the next one
         val nextMoveDelay = (MIN_MOVE_DELAY_MS..MAX_MOVE_DELAY_MS).random()
         gameHandler.postDelayed(pullUpRunnable, nextMoveDelay)
+
+
       }
     }
   }
@@ -108,9 +116,6 @@ class MainActivity : AppCompatActivity() {
 
       anchorNode.setParent(arFragment.arSceneView.scene)
 
-
-
-
 //       4
 //       Add N droid to the plane (N = COL x ROW)
       grid.matrixIndices { col, row ->
@@ -120,11 +125,10 @@ class MainActivity : AppCompatActivity() {
             renderable = renderableModel
           addOffset(x = row * spacing, z = col * spacing)
           grid[col][row] = this
-
           this.setOnTapListener { _, _ ->
             // TODO: You hit a droid!
             if (this.position != DroidPosition.DOWN) {
-              // Droid hit! assign 100 points
+              // Droid hit! assign 10 points
               scoreboard.score += 10
               this.pullDown()
             } else {
@@ -135,6 +139,21 @@ class MainActivity : AppCompatActivity() {
           }
         }
       }
+
+      heartNode = TranslatableNode().apply {
+        renderable = heartRenderable
+        setParent(anchorNode)
+        localScale = Vector3(0.07f, 0.07f, 0.07f)
+        addOffset(x = 1 * spacing, z = 3 * spacing )
+
+      }
+
+      heartNode?.setOnTapListener { _, _ ->
+        scoreboard.life += 1
+        heartClicked = true
+      }
+
+
 
 
 

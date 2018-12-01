@@ -14,10 +14,10 @@ class TranslatableNode : Node() {
     var position: DroidPosition = DroidPosition.DOWN
 
     // 2
-    fun pullUp() {
+    fun pullUp(offset: Float = 0.4F, heart: Boolean = false) {
         // If not moving up or already moved up, start animation
         if (position != DroidPosition.MOVING_UP && position != DroidPosition.UP) {
-            animatePullUp()
+            animatePullUp(offset, heart)
         }
     }
 
@@ -63,14 +63,29 @@ class TranslatableNode : Node() {
             setEvaluator(VectorEvaluator())
         }
     }
+    private fun localPositionAnimatorForHeart(vararg values: Any?): ObjectAnimator {
+        return ObjectAnimator().apply {
+            target = this@TranslatableNode
+            propertyName = "localPosition"
+            duration = 1000
+            interpolator = LinearInterpolator()
 
-    private fun animatePullUp() {
+            setAutoCancel(true)
+            // * = Spread operator, this will pass N `Any?` values instead of a single list `List<Any?>`
+            setObjectValues(*values)
+            // Always apply evaluator AFTER object values or it will be overwritten by a default one
+            setEvaluator(VectorEvaluator())
+        }
+    }
+
+    private fun animatePullUp(offset: Float = 0.4F, heart: Boolean) {
         // No matter where you start (i.e. start from .3 instead of 0F),
         // you will always arrive at .4F
         val low = Vector3(localPosition)
-        val high = Vector3(localPosition).apply { y = +.4F }
+        val high = Vector3(localPosition).apply { y = offset}
 
-        val animation = localPositionAnimator(low, high)
+        val animation = if (heart) localPositionAnimatorForHeart(low, high)
+        else localPositionAnimator(low, high)
 
         animation.addListener(object : Animator.AnimatorListener {
             override fun onAnimationRepeat(animation: Animator?) {}
@@ -95,4 +110,5 @@ class TranslatableNode : Node() {
 
         localPosition = Vector3(posX, posY, posZ)
     }
+
 }
